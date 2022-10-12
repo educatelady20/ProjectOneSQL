@@ -1,0 +1,19 @@
+-- Showing continens with the highest death count per population 
+
+SELECT location, date, total_cases, total_deaths, 
+	(total_deaths/total_cases) * 100 as DeathPercentage
+FROM coviddeaths
+WHERE continent is not null
+GROUP BY date
+order by 1,2
+
+
+-- Showing countries with Highest death per population 
+SELECT continent, MAX(total_deaths) as TotalDeathCount
+FROM coviddeaths
+WHERE continent is not null
+GROUP by continent
+order by TotalDeathCount desc
+
+
+
